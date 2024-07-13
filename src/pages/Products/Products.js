@@ -2,11 +2,13 @@ import { useState, useMemo, useCallback } from 'react';
 
 import Form from '../../components/Forms/Form';
 import {Modal} from '../../components/Modal/Modal';
-import { ProductList } from '../../components/Products/ProductsList';
+import ProductList from '../../components/Products/ProductsList';
 import { SolidTitle } from '../../components/Title/SolidTitle';
 
 import { useToggle } from '../../hooks/useToggle';
 import {useLS} from '../../hooks/useLS';
+
+import {useDispatch} from 'react-redux';
 
 export default function ProductsPage () {
   const [allProducts, setAllProducts] = useLS('products', []);
@@ -22,7 +24,8 @@ export default function ProductsPage () {
   console.log(filteredProducts);
 
   const addNewProduct = obj => setAllProducts((zuzuzu) => [...zuzuzu, obj]);
-  const deleteProduct = id => setAllProducts(zuzuzu => zuzuzu.filter(prod => prod.id !== id));
+  const deleteProduct = id => 
+  setAllProducts(zuzuzu => zuzuzu.filter(prod => prod.id !== id));
   // const toggleModal = () => setShowModal(!showModal);
   
   const handleChangeFilter = useCallback( (e) => {
@@ -59,7 +62,10 @@ export default function ProductsPage () {
   {/* <DeleteButton isOpen={this.state.isOpen} text={text}/>
       <DeleteButton isOpen={!this.state.isOpen}/> */}
      
-     <ProductList products={filteredProducts} onDeleteProduct={deleteProduct}/>
+     <ProductList 
+        // products={filteredProducts} 
+        // onDeleteProduct={deleteProduct}
+      />
     </>
   )
 }

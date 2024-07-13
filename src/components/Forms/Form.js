@@ -46,15 +46,15 @@ class Form extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
+    const {title, desc, size} = this.state;
     const obj = {
       id: uuid(),
-      title: this.state.title,
-      desc: this.state.desc,
-      size: this.state.size,
+      title,
+      desc,
+      size,
     }
-
-    this.setState({product: obj});
-    this.props.addNewProduct(obj); // !!! метод из App
+    this.setState({product: obj}); // тут для себя пишем новый объект продукта в свой локальный стэйт
+    this.props.addNewProduct(obj); // !!! метод из page Products.js
 
     this.props.onAdd(obj); // диспатчим - передаем продукт в redux
 

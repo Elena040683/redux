@@ -5,5 +5,10 @@ export const addProduct = (product) => ({
 
 export const deleteProduct = (id) => ({
   type: 'product/delete',
-  payload: {id},
+  payload: id,
 });
+
+export const filterValue = (value) => ({
+  type: 'filter/value',
+  payload: value,
+})
